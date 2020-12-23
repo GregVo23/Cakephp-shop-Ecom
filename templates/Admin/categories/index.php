@@ -14,6 +14,12 @@
       <h6 class="m-0 font-weight-bold text-primary">Liste des catégories</h6>
     </div>
     <div class="card-body">
+    <?php //S'il n'y a pas d ecatégorie a afficher
+    if(!$categories->count()): ?>
+        <div class="alert alert-info">
+            Aucunes catégories a afficher
+        </div>
+    <?php else : ?>
       <div class="table-responsive">
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
           <thead>
@@ -30,14 +36,15 @@
                 <td class="align-middle"><?= $categorie->nom ?></td>
                 <td class="align-middle"><?= $categorie->created->format('d/m/Y') ?></td>
                 <td class="text-right">
-                    <?= $this->Html->link('<li class="fas fa-edit"></li>', ['action' => 'edit'], ['class' => 'btn btn-warning', 'escape' => false]) ?>
-                    <?= $this->Html->link('<li class="fas fa-trash"></li>', ['action' => 'delete'], ['class' => 'btn btn-danger', 'escape' => false, 'confirm' => 'Etes vous certain de supprimer cette catégorie']) ?>
+                    <?= $this->Html->link('<li class="fas fa-edit"></li>', ['action' => 'edit', $categorie->id], ['class' => 'btn btn-warning', 'escape' => false]) ?>
+                    <?= $this->Html->link('<li class="fas fa-trash"></li>', ['action' => 'delete', $categorie->id], ['class' => 'btn btn-danger', 'escape' => false, 'confirm' => 'Etes vous certain de supprimer cette catégorie']) ?>
                 </td>
                 <?php endforeach; ?>
             </tr>
           </tbody>
         </table>
       </div>
+    <?php endif; ?>
     </div>
   </div>
   
