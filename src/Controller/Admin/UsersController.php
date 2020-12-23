@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Controller\Admin;
 
-use App\Controller\AppController;
+use App\Controller\admin\AppController;
 
 /**
  * Users Controller
@@ -29,7 +29,7 @@ class UsersController extends AppController
         $this->getRequest()->allowMethod(['get','post']);
         
         $result = $this->Authentication->getResult();
-        dump($result);
+        //dump($result);
         if($result->isValid()){
             return $this->redirect(['controller' => 'commandes', 'action' => 'index']);
         }
