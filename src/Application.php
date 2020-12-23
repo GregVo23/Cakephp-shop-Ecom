@@ -17,6 +17,7 @@ declare(strict_types=1);
 namespace App;
 
 use Cake\Core\Configure;
+use Cake\Routing\Router;
 use Cake\Core\Exception\MissingPluginException;
 use Cake\Error\Middleware\ErrorHandlerMiddleware;
 use Cake\Http\BaseApplication;
@@ -136,26 +137,27 @@ class Application extends BaseApplication
     public function getAuthenticationService(ServerRequestInterface $request) : AuthenticationServiceInterface
     {
         $authenticationService = new AuthenticationService([
-            'unauthenticateRedirect' => '/users/login',
+            'UnauthenticatedRedirect' => Router::url('/admin/users/login'),
             'queryParam' => 'redirect'
         ]);
         
-                
+        //Le nom que l'on a donné dans la base de donnée        
         $authenticationService->loadIdentifier('Authentication.Password', [
             'fields' => [
-                'username' => 'admin',
-                'password' => 'admin'
+                'username' => 'username',
+                'password' => 'password'
             ]
         ]);
         
         $authenticationService->loadAuthenticator('Authentication.Session');
-                
+        
+        //Le nom que l'on va donner aux champs du formulaire
         $authenticationService->loadAuthenticator('Authentication.Form', [
             'fields' => [
-                'username' => 'admin',
-                'password' => 'admin'
+                'username' => 'username',
+                'password' => 'password'
             ],
-            'loginUrl' => '/users/login'
+            'loginUrl' => Router::url('/admin/users/login')
         ]);    
         
         return $authenticationService;

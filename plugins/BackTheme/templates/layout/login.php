@@ -19,10 +19,10 @@
     <script src="https://kit.fontawesome.com/b52d20dcce.js" crossorigin="anonymous"></script>
 
 </head>
-<body id="bg-gradient-primary">
-    <div id="wrapper">
+<body class="bg-gradient-primary">
+    <div class="container">
 
-            <?= $this->Element('BackTheme.login') ?>
+            <?= $this->Fetch('content'); ?>
     </div>
 
     <?= $this->Html->script([

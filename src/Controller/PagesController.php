@@ -33,7 +33,8 @@ class PagesController extends AppController
 {
     public function index()
     {
-        $this->loadModel('Users');
+        //Creation d'un utilisateur
+        /*$this->loadModel('Users');
         $user = $this->Users->newEntity([
             'role' => 'admin',
             'username' => 'admin',
@@ -41,10 +42,11 @@ class PagesController extends AppController
             'prenom' => 'Prenom',
             'nom' => 'Nom',
             'email' => 'admin@admin.be',
+        
         ]);
-    
-    //dd($user);
-    $this->Users->save($user);
+        
+        //dd($user);
+        $this->Users->save($user); */
+
     }
-   
 }

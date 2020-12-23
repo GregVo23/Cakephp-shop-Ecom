@@ -31,7 +31,7 @@ use Cake\View\Exception\MissingTemplateException;
  */
 class PagesController extends AppController
 {
-
+        /*
         public function index()
        {
 
@@ -47,5 +47,6 @@ class PagesController extends AppController
     
     //dd($user);
     $this->Users->save($user);
-    }        
+    }     
+    */   
 }

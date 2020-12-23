@@ -43,10 +43,10 @@ class AppController extends Controller
         parent::initialize();
         
         $this->loadComponent('Authentication.Authentication', [
-            'requireIdentity' => false
+            //'requireIdentity' => false
         ]);
 
-        //$this->loadComponent('Authentication.Authentication');
+        
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
 
