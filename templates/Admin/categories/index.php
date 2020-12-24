@@ -44,6 +44,13 @@
           </tbody>
         </table>
       </div>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+              <?= $this->Paginator->prev('< ') ?>
+              <?= $this->Paginator->numbers() ?>
+              <?= $this->Paginator->next(' >') ?>
+            </ul>
+          </nav>
     <?php endif; ?>
     </div>
   </div>
