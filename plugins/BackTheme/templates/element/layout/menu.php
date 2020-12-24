@@ -89,10 +89,9 @@
       </li>
 
       <!-- Nav Item - Charts -->
+      
       <li class="nav-item">
-        <a class="nav-link" href="charts.html">
-          <i class="fas fa-fw fa-chart-area"></i>
-          <span>Catégories</span></a>
+      <?= $this->Html->link('<i class="fas fa-list"></i> Catégories', ['controller' => 'categories', 'action' => 'index'], ['class' => 'nav-link', 'escape' => false]) ?>
       </li>
 
       <!-- Divider -->

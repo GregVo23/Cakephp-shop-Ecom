@@ -37,7 +37,7 @@
 </head>
 
 <body>
-    
+    <?= $this->Flash->Render() ?>    
     <!--Contenu page-->
     <?= $this->fetch('content'); ?>
     

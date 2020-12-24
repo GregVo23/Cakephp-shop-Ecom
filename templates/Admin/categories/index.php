@@ -4,7 +4,7 @@
             <h1 class="h3 mb-2 text-gray-800">Catégories</h1>
         </div>
         <div class="col text-right">
-            <?= $this->Html->link('<li class="fas fa-edit"></li> Ajouter', ['action' => 'add'], ['class' => 'btn btn-success', 'escape' => false]) ?>
+            <?= $this->Html->link('<li class="fas fa-plus"></li> Ajouter', ['action' => 'add'], ['class' => 'btn btn-success', 'escape' => false]) ?>
         </div>
     </div>    
 
@@ -30,17 +30,17 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
                 <?php //Boucle sur les catégories
                 foreach($categories as $categorie): ?>
+                <tr>      
                 <td class="align-middle"><?= $categorie->nom ?></td>
                 <td class="align-middle"><?= $categorie->created->format('d/m/Y') ?></td>
                 <td class="text-right">
                     <?= $this->Html->link('<li class="fas fa-edit"></li>', ['action' => 'edit', $categorie->id], ['class' => 'btn btn-warning', 'escape' => false]) ?>
                     <?= $this->Html->link('<li class="fas fa-trash"></li>', ['action' => 'delete', $categorie->id], ['class' => 'btn btn-danger', 'escape' => false, 'confirm' => 'Etes vous certain de supprimer cette catégorie']) ?>
                 </td>
+                </tr>
                 <?php endforeach; ?>
-            </tr>
           </tbody>
         </table>
       </div>

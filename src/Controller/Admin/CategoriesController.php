@@ -53,11 +53,11 @@ class CategoriesController extends AppController
         if ($this->request->is('post')) {
             $category = $this->Categories->patchEntity($category, $this->request->getData());
             if ($this->Categories->save($category)) {
-                $this->Flash->success(__('The category has been saved.'));
+                $this->Flash->success(__('La catégorie a été ajoutée.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The category could not be saved. Please, try again.'));
+            $this->Flash->error(__('La catégorie n\'a pas pu être ajoutée.'));
         }
         $this->set(compact('category'));
     }
@@ -71,17 +71,17 @@ class CategoriesController extends AppController
      */
     public function edit($id = null)
     {
-        $category = $this->Categories->get($id, [
-            'contain' => [],
-        ]);
+        $category = $this->Categories->get($id);
+                
         if ($this->request->is(['patch', 'post', 'put'])) {
             $category = $this->Categories->patchEntity($category, $this->request->getData());
+            
             if ($this->Categories->save($category)) {
-                $this->Flash->success(__('The category has been saved.'));
+                $this->Flash->success(__('La catégorie a été sauvegardée avec succés.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The category could not be saved. Please, try again.'));
+            $this->Flash->error(__('La catégorie n\'a pas pu être sauvegardée.'));
         }
         $this->set(compact('category'));
     }

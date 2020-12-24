@@ -32,6 +32,7 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
                 <!--Contenu page-->
+                    <?= $this->Flash->Render() ?>
                     <?= $this->fetch('content'); ?>
                 
                     <!-- layout tableau a supprimer ou modifier -->
