@@ -93,6 +93,10 @@
       <li class="nav-item">
       <?= $this->Html->link('<i class="fas fa-list"></i> Catégories', ['controller' => 'categories', 'action' => 'index'], ['class' => 'nav-link', 'escape' => false]) ?>
       </li>
+      
+      <li class="nav-item">
+      <?= $this->Html->link('<i class="fas fa-cogs"></i> Caractéristiques', ['controller' => 'caracteristiques', 'action' => 'index'], ['class' => 'nav-link', 'escape' => false]) ?>
+      </li>
 
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
