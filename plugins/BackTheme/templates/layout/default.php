@@ -15,6 +15,7 @@
     <?= $this->Html->css([
       'BackTheme./css/sb-admin-2.min',
       'BackTheme./css/fontawesome.all.min',
+      'https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css',
     ]); ?> 
     <script src="https://kit.fontawesome.com/b52d20dcce.js" crossorigin="anonymous"></script>
 
@@ -58,7 +59,9 @@
         'BackTheme./js/Chart.min',
         'BackTheme./js/chart-area-demo',
         'BackTheme./js/chart-pie-demo',
-        'BackTheme./js/test'
+        'BackTheme./js/test',
+        'https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js',
+        'BackTheme./js/select',
     ]); ?>
     
     <!-- Bootstrap core JavaScript-->

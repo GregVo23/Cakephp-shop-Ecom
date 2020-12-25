@@ -36,6 +36,7 @@
                 <td class="align-middle"><?= $caracteristiques->nom ?></td>
                 <td class="align-middle"><?= $caracteristiques->created->format('d/m/Y') ?></td>
                 <td class="text-right">
+                    <?= $this->Html->link('<li class="fas fa-list"></li>', ['controller' => 'CaracteristiqueValues', 'action' => 'index', $caracteristiques->id], ['class' => 'btn btn-primary', 'escape' => false]) ?>
                     <?= $this->Html->link('<li class="fas fa-edit"></li>', ['action' => 'edit', $caracteristiques->id], ['class' => 'btn btn-warning', 'escape' => false]) ?>
                     <?= $this->Html->link('<li class="fas fa-trash"></li>', ['action' => 'delete', $caracteristiques->id], ['class' => 'btn btn-danger', 'escape' => false, 'confirm' => 'Etes vous certain de supprimer cette caractéristique']) ?>
                 </td>
