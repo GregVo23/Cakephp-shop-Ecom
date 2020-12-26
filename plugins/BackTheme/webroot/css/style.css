@@ -1,0 +1,15 @@
+
+/*  Champ SELECT du formulaire ADD produit  */
+select
+{
+    display: block;
+    width: 100%;
+}
+
+#select2-category-id-container
+{
+    display: block;
+    width: 100%;
+    height: calc(1.5em + .75rem + 2px) !important;
+}
+

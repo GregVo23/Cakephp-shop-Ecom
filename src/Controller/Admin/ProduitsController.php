@@ -17,7 +17,6 @@ class ProduitsController extends AppController
         'limit' => 2,
     ];
 
-
     public function initialize() : void
     {
         parent::initialize();
@@ -31,7 +30,9 @@ class ProduitsController extends AppController
      */
     public function index()
     {
-        $produits = $this->paginate($this->Prduits->find()->where(['deleted IS NULL']));
+        $produits = $this->paginate($this->Produits->find()
+            ->contain(['Categories'])
+            ->where(['Produits.deleted IS NULL']));
 
         $this->set(compact('produits'));
     }
@@ -63,13 +64,19 @@ class ProduitsController extends AppController
         if ($this->request->is('post')) {
             $produit = $this->Produits->patchEntity($produit, $this->request->getData());
             if ($this->Produits->save($produit)) {
-                $this->Flash->success(__('Le produit a été ajoutée.'));
+                $this->Flash->success(__('Le produit a été ajouté.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('Le produit n\'a pas pu être ajoutée.'));
+            $this->Flash->error(__('Le produit n\'a pas pu être ajouté.'));
         }
-        $this->set(compact('produit'));
+        //Récupération de la liste des catégories
+        //Produits->Categories ou $this->loadModel('Categories')
+        $categories = $this->Produits->Categories
+            ->find('list', ['keyfield' => 'id', 'valueField' => 'nom'])
+            ->where(['deleted IS NULL']);
+        
+        $this->set(compact('produit', 'categories'));
     }
 
     /**
@@ -81,7 +88,7 @@ class ProduitsController extends AppController
      */
     public function edit($id = null)
     {
-        $produit = $this->Produits->get($id);
+        $produit = $this->Produits->get($id, ['contain' => ['CaracteristiqueValues']]);
                 
         if ($this->request->is(['patch', 'post', 'put'])) {
             $produit = $this->Produits->patchEntity($produit, $this->request->getData());
@@ -93,7 +100,40 @@ class ProduitsController extends AppController
             }
             $this->Flash->error(__('Le produit n\'a pas pu être sauvegardée.'));
         }
-        $this->set(compact('produit'));
+        //Version 1 Abandonnée
+        //Récupération de la liste des catégories 
+        //Produits->Categories ou $this->loadModel('Categories')
+        //$categories = $this->Produits->Categories
+        //    ->find('list', ['keyfield' => 'id', 'valueField' => 'nom'])
+        //    ->where(['deleted IS NULL']);
+        //$this->set(compact('produit', 'categories'));
+        
+        //Version 2
+        //Récupération de la liste des catégories 
+        $categories = $this->Produits->Categories->find('list', ['keyFiel' => 'id', 'valueField' => 'nom'])
+                ->where(['deleted IS NULL'])
+                ->toArray();
+        //Récupération des caractéristiques
+        $this->loadModel('Caracteristiques');
+        $caracteristiques = $this->Caracteristiques->find()
+                ->contain([
+                    'CaracteristiqueValues' => [
+                        'conditions' => [
+                            'deleted IS NULL'
+                            ]
+                        ]
+                ])
+                ->where(['deleted IS NULL'])
+                ->toArray();
+        //Parcours de toutes les caracteristiques
+        $caracteristiqueValues = [];
+        foreach($caracteristiques as $caracteristique){
+            foreach($caracteristique->caracteristique_values as $caracteristique_value){
+            
+                $caracteristiqueValues[$caracteristique_value->id] = $caracteristique_value->nom;
+            }
+        }
+        $this->set(compact('produit', 'categories', 'caracteristiques', 'caracteristiqueValues'));
     }
 
     /**

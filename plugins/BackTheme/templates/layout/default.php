@@ -16,6 +16,7 @@
       'BackTheme./css/sb-admin-2.min',
       'BackTheme./css/fontawesome.all.min',
       'https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css',
+      'style',
     ]); ?> 
     <script src="https://kit.fontawesome.com/b52d20dcce.js" crossorigin="anonymous"></script>
 
