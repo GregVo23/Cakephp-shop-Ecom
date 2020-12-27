@@ -69,6 +69,7 @@ class Application extends BaseApplication
         
         $this->addPlugin('BackTheme');
         $this->addPlugin('FrontTheme');
+        $this->addPlugin('Proffer');
     }
 
     /**

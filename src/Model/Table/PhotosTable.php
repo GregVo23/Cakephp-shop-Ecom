@@ -51,6 +51,15 @@ class PhotosTable extends Table
             'foreignKey' => 'produit_id',
             'joinType' => 'INNER',
         ]);
+        
+
+        // Add the behaviour and configure any options you want
+        $this->addBehavior('Proffer.Proffer', [
+                'file' => [	// The name of your upload field
+                        'root' => WWW_ROOT . 'files', // Customise the root upload folder here, or omit to use the default
+                        'dir' => 'photo_dir',	// The name of the field to store the folder
+                ]
+        ]);
     }
 
     /**
@@ -65,17 +74,7 @@ class PhotosTable extends Table
             ->integer('id')
             ->allowEmptyString('id', null, 'create');
 
-        $validator
-            ->scalar('file_dir')
-            ->maxLength('file_dir', 255)
-            ->requirePresence('file_dir', 'create')
-            ->notEmptyFile('file_dir');
 
-        $validator
-            ->scalar('file')
-            ->maxLength('file', 255)
-            ->requirePresence('file', 'create')
-            ->notEmptyFile('file');
 
         $validator
             ->scalar('alt')
