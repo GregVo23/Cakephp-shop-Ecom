@@ -34,12 +34,12 @@
                 <?php //Boucle sur les catégories
                 foreach($photos as $photo): ?>
                 <tr>      
-                <td class="align-middle"><?= $this->Html->image('photos/file/' . $photo->file_dir . '/' . $photo->file) ?></td>
+                <td class="align-middle text-center"><?= $this->Html->image('photos/file/' . $photo->file_dir . '/' . $photo->file, ['style' => 'width:120px;']) ?></td>
                 <td class="align-middle"><?= $photo->alt ?></td>
                 <td class="align-middle"><?= $photo->created->format('d/m/Y') ?></td>
                 <td class="text-right">
-                    <?= $this->Html->link('<li class="fas fa-edit"></li>', ['action' => 'edit', $photo->id], ['class' => 'btn btn-warning', 'escape' => false]) ?>
-                    <?= $this->Html->link('<li class="fas fa-trash"></li>', ['action' => 'delete', $photo->id], ['class' => 'btn btn-danger', 'escape' => false, 'confirm' => 'Etes vous certain de supprimer cette photo']) ?>
+                    <?= $this->Html->link('<li class="fas fa-edit align-middle"></li>', ['action' => 'edit', $photo->id], ['class' => 'btn btn-warning', 'escape' => false]) ?>
+                    <?= $this->Html->link('<li class="fas fa-trash align-middle"></li>', ['action' => 'delete', $photo->id], ['class' => 'btn btn-danger', 'escape' => false, 'confirm' => 'Etes vous certain de supprimer cette photo']) ?>
                 </td>
                 </tr>
                 <?php endforeach; ?>

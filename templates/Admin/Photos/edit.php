@@ -7,12 +7,12 @@
 
   
     <div class="card shadow my-4">
-        <?= $this->Form->create($photo) ?>
+        <?= $this->Form->create($photo, ['type' => 'file']) ?>
       <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary">Modifier une photo</h6>
       </div>
       <div class="card-body">
-          <?= $this->Form->control('nom', ['class' => 'form-control']) ?>
+          <?= $this->Form->control('file', ['class' => 'form-control', 'type' => 'file']) ?>
           
          
       </div>

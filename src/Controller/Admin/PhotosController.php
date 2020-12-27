@@ -95,7 +95,7 @@ class PhotosController extends AppController
     {
         $photo = $this->Photos->get($id);
 
-        $photo = $this->Photoss->patchEntity($photo, ['deleted' => date('Y-m-d H:i:s')]);
+        $photo = $this->Photos->patchEntity($photo, ['deleted' => date('Y-m-d H:i:s')]);
         
         if ($this->Photos->save($photo)) {
             $this->Flash->success(__('La photo a été supprimée.'));
