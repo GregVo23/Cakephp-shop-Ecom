@@ -56,6 +56,9 @@ class ProduitsTable extends Table
         $this->hasMany('Photos', [
             'foreignKey' => 'produit_id',
         ]);
+        $this->hasMany('CommandeLignes', [
+            'foreignKey' => 'produit_id',
+        ]);
         $this->belongsToMany('CaracteristiqueValues', [
             'foreignKey' => 'produit_id',
             'targetForeignKey' => 'caracteristique_value_id',

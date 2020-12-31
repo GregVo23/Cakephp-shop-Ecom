@@ -70,6 +70,10 @@
 
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
+      <?= $this->Html->link('<i class="fas fa-truck"></i> Commandes', ['controller' => 'commandes', 'action' => 'index'], ['class' => 'nav-link', 'escape' => false]) ?>
+      </li>
+      
+      <li class="nav-item">
       <?= $this->Html->link('<i class="fas fa-shopping-cart"></i> Produits', ['controller' => 'produits', 'action' => 'index'], ['class' => 'nav-link', 'escape' => false]) ?>
       </li>
 
