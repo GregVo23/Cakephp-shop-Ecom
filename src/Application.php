@@ -48,6 +48,8 @@ class Application extends BaseApplication
      */
     public function bootstrap(): void
     {
+        $this->addPlugin('CsvView');
+
         $this->addPlugin('Migrations');
 
         
@@ -70,6 +72,7 @@ class Application extends BaseApplication
         $this->addPlugin('BackTheme');
         $this->addPlugin('FrontTheme');
         $this->addPlugin('Proffer');
+        $this->addPlugin('CsvView');
     }
 
     /**

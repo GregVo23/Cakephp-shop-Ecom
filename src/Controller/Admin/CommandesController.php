@@ -50,4 +50,43 @@ class CommandesController extends AppController
         $this->set(compact('commande'));
     }
     
+     /**
+     * Export method
+     *
+     * @return \Cake\Http\Response|null|void Renders view
+     */
+    public function export()
+    {
+        
+        $data = [
+            ['a','b','c'],
+            ['1','2','3'],
+            ['ceci','est','un','test']
+        ];
+        /*
+        $this->set(compact('data'));
+        $this->viewBuilder()
+                ->setClassName('CsvView.Csv')
+                ->setOption([
+                    'serialize' => 'data',
+                    'delimiter' => ';',
+                    'bom' => true,
+                ]);
+
+        $this->response = $this->response->withDownload('commandes.csv');
+        */
+        
+    $this->response = $this->response->withDownload('commandes.csv');
+    $commandes = $this->Commandes->find()->all();
+    $_serialize = 'data';
+    //$_header = ['ID', 'Name', 'Username', 'Role', 'Created', 'Modified'];
+    //$_extract = ['id', 'name', 'username', 'role', 'created', 'modified'];
+
+    $this->viewBuilder()->setClassName('CsvView.Csv');
+    //$this->set(compact('users', '_serialize', '_header', '_extract'));
+    $this->set(compact('data', '_serialize'));
+    
+    
+    
+    }
 }
