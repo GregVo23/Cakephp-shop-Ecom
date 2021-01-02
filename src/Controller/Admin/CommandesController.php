@@ -58,11 +58,23 @@ class CommandesController extends AppController
     public function export()
     {
         
-        $data = [
-            ['a','b','c'],
-            ['1','2','3'],
-            ['ceci','est','un','test']
-        ];
+        $commandes = $this->Commandes->find()->contain('CommandeLignes.Produits');
+        
+        $data = [['Nom', 'Email', 'Total']];
+        foreach ($commandes as $commande):
+            $tableauCommande = [];
+            $tableauCommande[] = $commande->fullName;
+            $tableauCommande[] = $commande->email;
+            
+            $total = 0;
+            foreach ($commande->commande_lignes as $commande_lignes):
+                $total += $commande_lignes->produit->prix;
+            endforeach;
+            $tableauCommande[] = $total;
+            
+            $data = $tableauCommande;
+        endforeach;
+        
         /*
         $this->set(compact('data'));
         $this->viewBuilder()
@@ -75,18 +87,26 @@ class CommandesController extends AppController
 
         $this->response = $this->response->withDownload('commandes.csv');
         */
+     
+    //dd($data);
+    /*
+        $data = [
+        ['a', 'b', 'c'],
+        [1, 2, 3],
+        ['you', 'and', 'me'],
+    ];
+     
+     */
         
     $this->response = $this->response->withDownload('commandes.csv');
-    $commandes = $this->Commandes->find()->all();
+    //$commandes = $this->Commandes->find()->all();
     $_serialize = 'data';
-    //$_header = ['ID', 'Name', 'Username', 'Role', 'Created', 'Modified'];
+    $_header = ['Nom', 'Email', 'Total'];
     //$_extract = ['id', 'name', 'username', 'role', 'created', 'modified'];
 
     $this->viewBuilder()->setClassName('CsvView.Csv');
     //$this->set(compact('users', '_serialize', '_header', '_extract'));
-    $this->set(compact('data', '_serialize'));
-    
-    
+    $this->set(compact('data', '_serialize', '_header'));
     
     }
 }
