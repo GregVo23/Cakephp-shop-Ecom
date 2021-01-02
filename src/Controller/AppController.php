@@ -57,6 +57,15 @@ class AppController extends Controller
         //$this->loadComponent('FormProtection');
     }
     
+    public function beforeFilter(EventInterface $event) {
+        $this->loadModel('Categories');
+        $categories = $this->Categories->find('list', ['keyField' => 'id', 'valueField' => 'nom'])->where(['deleted IS NULL']);
+        
+        //dd($categories->toArray());
+        
+        $this->set(compact('categories'));
+    }
+    
     public function beforeRender(EventInterface $event)
     {
         $this->viewBuilder()->setTheme('FrontTheme');

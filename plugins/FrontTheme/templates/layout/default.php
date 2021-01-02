@@ -31,18 +31,19 @@
             'FrontTheme./css/ion.rangeSlider',
             'FrontTheme./css/ion.rangeSlider.skinFlat',
             'FrontTheme./css/magnific-popup.css',
-            'FrontTheme./css/main.css'
+            'FrontTheme./css/main.css',
+            'FrontTheme./css/style.css'
         ]); ?> 
 	
 </head>
 
 <body>
-    <?= $this->Flash->Render() ?>    
-    <!--Contenu page-->
-    <?= $this->fetch('content'); ?>
     
     <!--Menu-->
     <?= $this->Element('FrontTheme.layout/menu'); ?>
+    
+    <!--Flash-->
+    <?= $this->Flash->Render() ?>    
     
     <!--Contenu page-->
     <?= $this->fetch('content'); ?>
