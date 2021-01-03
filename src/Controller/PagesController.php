@@ -22,6 +22,7 @@ use Cake\Http\Exception\NotFoundException;
 use Cake\Http\Response;
 use Cake\View\Exception\MissingTemplateException;
 
+
 /**
  * Static content controller
  *
@@ -31,6 +32,13 @@ use Cake\View\Exception\MissingTemplateException;
  */
 class PagesController extends AppController
 {
+    public function beforeFilter($event)
+    {
+        parent::beforeFilter($event);
+        
+        $this->Authentication->addUnauthenticatedActions(['index']);
+    }
+    
     public function index()
     {
         //Creation d'un utilisateur

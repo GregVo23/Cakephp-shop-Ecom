@@ -50,7 +50,8 @@ class UsersController extends AppController
         $result = $this->Authentication->getResult();
         
         if($result->isValid()){
-            return $this->redirect(['controller' => 'users', 'action' => 'login']);
+            $this->Authentication->logout();
+            return $this->redirect(['controller' => 'Users', 'action' => 'login']);
         }
         return $this->redirect($this->referer());
     }

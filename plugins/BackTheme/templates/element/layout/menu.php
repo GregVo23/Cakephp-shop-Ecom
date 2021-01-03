@@ -19,6 +19,10 @@
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
+      
+      <li class="nav-item">
+      <?= $this->Html->link('<i class="fas fa-sign-out-alt"></i> Déconnection', ['controller' => 'users', 'action' => 'logout'], ['class' => 'nav-link', 'escape' => false]) ?>
+      </li>
 
       <!-- Divider -->
       <hr class="sidebar-divider">
