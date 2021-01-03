@@ -20,11 +20,14 @@
                                                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                                                          aria-expanded="false">Shop</a>
                                                         <ul class="dropdown-menu">
-                                                                <li class="nav-item"><a class="nav-link" href="category.html">Shop Category</a></li>
-                                                                <li class="nav-item"><a class="nav-link" href="single-product.html">Product Details</a></li>
-                                                                <li class="nav-item"><a class="nav-link" href="checkout.html">Product Checkout</a></li>
-                                                                <li class="nav-item"><a class="nav-link" href="cart.html">Shopping Cart</a></li>
-                                                                <li class="nav-item"><a class="nav-link" href="confirmation.html">Confirmation</a></li>
+                                                            <?php //Liste des catégories
+                                                            foreach ($categories as $categorie): ?>
+                                                                <li class="nav-item">
+                                                                    <?= $this->Html->link($categorie, ["class" => "nav-link"]) ?>
+                                                                </li>
+                                                            <?php
+                                                            endforeach;
+                                                            ?>
                                                         </ul>
                                                 </li>
                                                 <li class="nav-item submenu dropdown">

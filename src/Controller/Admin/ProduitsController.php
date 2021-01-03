@@ -110,7 +110,7 @@ class ProduitsController extends AppController
         
         //Version 2
         //Récupération de la liste des catégories 
-        $categories = $this->Produits->Categories->find('list', ['keyFiel' => 'id', 'valueField' => 'nom'])
+        $categories = $this->Produits->Categories->find('list', ['keyField' => 'id', 'valueField' => 'nom'])
                 ->where(['deleted IS NULL'])
                 ->toArray();
         //Récupération des caractéristiques
