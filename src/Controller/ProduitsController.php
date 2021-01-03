@@ -25,9 +25,14 @@ class ProduitsController extends AppController
      */
     public function index($categorieId)
     {
-        $this->Produits->find()->where(['category_id' => $categorieId]);
+        //Liste des produits
+        $produits = $this->Produits->find()->where(['category_id' => $categorieId]);
+        
+        //Liste de catégories
+        $categorie = $this->Produits->Categories->get($categorieId);
 
         $this->set(['Produits' => $this->paginate($produits)]);
+        $this->set(compact('categorie'));
     }
 
     /**
